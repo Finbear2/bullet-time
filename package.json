@@ -1,0 +1,35 @@
+{
+  "name": "matrix",
+  "author": "finley stoner",
+  "version": "1.0.0",
+  "keywords": ["pebble-app"],
+  "private": true,
+  "dependencies": {},
+  "pebble": {
+    "displayName": "Matrix",
+    "uuid": "4a074963-daa1-4dd1-9d48-3c0f1021c67f",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk",
+      "diorite",
+      "emery",
+      "flint",
+      "gabbro"
+    ],
+    "watchapp": {
+      "watchface": false
+    },
+    "messageKeys": [
+      "SENDER",
+      "TEXT",
+      "ROOM_NAME",
+      "TYPE"
+    ],
+    "resources": {
+      "media": []
+    }
+  }
+}
