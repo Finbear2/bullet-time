@@ -315,7 +315,7 @@ Pebble.addEventListener('appmessage', function(e) {
 
 Pebble.addEventListener("showConfiguration", function() {
     console.log("Opening config page");
-    Pebble.openURL("file:///home/fin/dev/pebble/test/src/pkjs/config.html");
+    Pebble.openURL("https://finbear2.github.io/bullet-time/src/pkjs/config.html");
 });
 
 Pebble.addEventListener("webviewclosed", function(e) {
