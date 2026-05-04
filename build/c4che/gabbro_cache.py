@@ -46,7 +46,7 @@ PEBBLE_SDK_ROOT = '/home/fin/.pebble-sdk/SDKs/current/sdk-core/pebble'
 PLATFORM = {'NAME': 'gabbro', 'MAX_APP_BINARY_SIZE': 131072, 'MAX_APP_MEMORY_SIZE': 131072, 'MAX_WORKER_MEMORY_SIZE': 10240, 'MAX_RESOURCES_SIZE_APPSTORE': 262144, 'MAX_RESOURCES_SIZE': 1048576, 'DEFINES': ['PBL_PLATFORM_GABBRO', 'PBL_COLOR', 'PBL_ROUND', 'PBL_MICROPHONE', 'PBL_HEALTH', 'PBL_COMPASS', 'PBL_TOUCH', 'PBL_DISPLAY_WIDTH=260', 'PBL_DISPLAY_HEIGHT=260'], 'BUILD_DIR': 'gabbro', 'BUNDLE_BIN_DIR': 'gabbro', 'ADDITIONAL_TEXT_LINES_FOR_PEBBLE_H': [], 'MAX_FONT_GLYPH_SIZE': 512, 'TAGS': ['gabbro', 'color', 'round', 'mic', 'health', 'compass', 'touch', '260w', '260h']}
 PLATFORM_NAME = 'gabbro'
 PREFIX = '/usr/local'
-PROJECT_INFO = {'displayName': 'Matrix', 'uuid': '4a074963-daa1-4dd1-9d48-3c0f1021c67f', 'sdkVersion': '3', 'enableMultiJS': True, 'targetPlatforms': ['aplite', 'basalt', 'chalk', 'diorite', 'emery', 'flint', 'gabbro'], 'watchapp': {'watchface': False}, 'messageKeys': {'SENDER': 10000, 'TEXT': 10001, 'ROOM_NAME': 10002, 'TYPE': 10003}, 'resources': {'media': []}, 'name': 'matrix', 'shortName': 'Matrix', 'longName': 'Matrix', 'versionLabel': '1.0.0', 'companyName': 'finley stoner', 'appKeys': {'SENDER': 10000, 'TEXT': 10001, 'ROOM_NAME': 10002, 'TYPE': 10003}}
+PROJECT_INFO = {'displayName': 'Bullet Time', 'uuid': '4a074963-daa1-4dd1-9d48-3c0f1021c67f', 'sdkVersion': '3', 'enableMultiJS': True, 'targetPlatforms': ['aplite', 'basalt', 'chalk', 'diorite', 'emery', 'flint', 'gabbro'], 'watchapp': {'watchface': False}, 'messageKeys': {'SENDER': 10000, 'TEXT': 10001, 'ROOM_NAME': 10002, 'TYPE': 10003}, 'resources': {'media': []}, 'name': 'bullet-time', 'shortName': 'Bullet Time', 'longName': 'Bullet Time', 'versionLabel': '1.0.0', 'companyName': 'fin', 'appKeys': {'SENDER': 10000, 'TEXT': 10001, 'ROOM_NAME': 10002, 'TYPE': 10003}}
 REQUESTED_PLATFORMS = ['aplite', 'basalt', 'chalk', 'diorite', 'emery', 'flint', 'gabbro']
 RESOURCES_JSON = []
 RPATH_ST = '-Wl,-rpath,%s'
@@ -61,7 +61,7 @@ STLIB_MARKER = None
 STLIB_ST = '-l%s'
 SUPPORTED_PLATFORMS = ['diorite', 'aplite', 'emery', 'flint', 'chalk', 'gabbro', 'basalt']
 TARGET_PLATFORMS = ['gabbro', 'flint', 'emery', 'diorite', 'chalk', 'basalt', 'aplite']
-TIMESTAMP = 1777884793
+TIMESTAMP = 1777886080
 USE_GROUPS = True
 VERBOSE = 0
 WEBPACK = ['/home/fin/.pebble-sdk/SDKs/current/node_modules/.bin/webpack']

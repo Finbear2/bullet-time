@@ -1,12 +1,12 @@
 {
-  "name": "matrix",
-  "author": "finley stoner",
+  "name": "bullet-time",
+  "author": "fin",
   "version": "1.0.0",
   "keywords": ["pebble-app"],
   "private": true,
   "dependencies": {},
   "pebble": {
-    "displayName": "Matrix",
+    "displayName": "Bullet Time",
     "uuid": "4a074963-daa1-4dd1-9d48-3c0f1021c67f",
     "sdkVersion": "3",
     "enableMultiJS": true,

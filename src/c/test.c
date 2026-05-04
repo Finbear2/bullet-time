@@ -204,6 +204,18 @@ static void dictation_callback(
   }
 }
 
+static void load_dictation_message() {
+
+  messagesCounter = 1;
+
+  strncpy(messages[0], "Speech to Text", 127);
+  messages[0][127] = '\0';
+
+  strncpy(senders[0], "Send Message", 127);
+  senders[0][127] = '\0';
+
+}
+
 
 
 
@@ -238,16 +250,15 @@ static uint16_t messages_get_num_rows_callback(MenuLayer *menu_layer, uint16_t s
 static void rooms_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *context) {
   APP_LOG(APP_LOG_LEVEL_INFO, "Opening room: %s", rooms[cell_index->row]);
 
-  messagesCounter = 1;
-  
+  messagesCounter = 0;
+
   memset(messages, 0, sizeof(messages));
   memset(senders, 0, sizeof(senders));
 
-  strncpy(messages[0], "Speech to Text", 127);
-  messages[0][127] = '\0';
-
-  strncpy(senders[0], "Send Message", 127);
-  senders[0][127] = '\0';
+  PBL_IF_MICROPHONE_ELSE(
+    load_dictation_message(),
+    APP_LOG(APP_LOG_LEVEL_ERROR, "No microphone available")
+  );
 
   get_room_messages(rooms[cell_index->row]);
 
@@ -321,7 +332,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       menu_layer_reload_data(messagesLayer);
     }
   } else if (strcmp(type, "NOT_CONF") == 0) {
-
+    text_layer_set_text(loadingTextLayer, "Please Go To Configuration Site And Setup Details");
   }
   
 }
@@ -413,6 +424,7 @@ static void loading_window_load(Window *window) {
   text_layer_set_text_color(loadingTextLayer, GColorBlack);
   text_layer_set_font(loadingTextLayer, fonts_get_system_font(FONT_KEY_GOTHIC_28));
   text_layer_set_text(loadingTextLayer, "Loading...");
+  text_layer_set_overflow_mode(loadingTextLayer, GTextOverflowModeWordWrap);
 
   bar_load(window);
 
@@ -442,7 +454,7 @@ static void view_window_load(Window *window) {
   viewScrollLayer = scroll_layer_create(bounds);
   scroll_layer_set_click_config_onto_window(viewScrollLayer, window);
 
-  viewBodyTextLayer = text_layer_create(GRect(20, 0, bounds.size.w, 20000));
+  viewBodyTextLayer = text_layer_create(GRect(5, 20, bounds.size.w - 10, 20000));
   
   text_layer_set_background_color(viewBodyTextLayer, GColorWhite);
   text_layer_set_text_alignment(viewBodyTextLayer, GTextAlignmentCenter);
