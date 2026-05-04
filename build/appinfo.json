@@ -4,13 +4,14 @@
     "sdkVersion": "3",
     "enableMultiJS": true,
     "targetPlatforms": [
-        "aplite",
         "basalt",
-        "chalk",
         "diorite",
         "emery",
-        "flint",
-        "gabbro"
+        "flint"
+    ],
+    "capabilities": [
+        "microphone",
+        "configurable"
     ],
     "watchapp": {
         "watchface": false
@@ -22,7 +23,19 @@
         "TYPE": 10003
     },
     "resources": {
-        "media": []
+        "media": [
+            {
+                "menuIcon": true,
+                "type": "bitmap",
+                "name": "IMAGE_ICON",
+                "file": "logo-small.png"
+            },
+            {
+                "type": "bitmap",
+                "name": "IMAGE_LOGO",
+                "file": "logo-big.png"
+            }
+        ]
     },
     "name": "bullet-time",
     "shortName": "Bullet Time",
@@ -34,6 +47,5 @@
         "TEXT": 10001,
         "ROOM_NAME": 10002,
         "TYPE": 10003
-    },
-    "capabilities": []
+    }
 }

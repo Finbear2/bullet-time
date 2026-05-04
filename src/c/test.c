@@ -104,8 +104,20 @@ static void bar_load(Window *window) {
 }
 
 static void bar_unload() {
-  if (topBarLayer) layer_destroy(topBarLayer);
-  if (topBarTextLayer) text_layer_destroy(topBarTextLayer);
+  if (progressTimer) {
+    app_timer_cancel(progressTimer);
+    progressTimer = NULL;
+  }
+
+  if (topBarLayer) {
+    layer_destroy(topBarLayer);
+    topBarLayer = NULL;
+  }
+
+  if (topBarTextLayer) {
+    text_layer_destroy(topBarTextLayer);
+    topBarTextLayer = NULL;
+  }
 }
 
 GRect reserve_bar_space(Layer*windowLayer) {
@@ -126,6 +138,8 @@ static void tick_handler(struct tm *tickTime, TimeUnits unitsChanged) {
 
 static void progress_timer_callback(void *context) {
 
+  if (!topBarLayer) return;
+
   if (progress >= 10) {
     if (progressTimer) {
       app_timer_cancel(progressTimer);
@@ -138,7 +152,6 @@ static void progress_timer_callback(void *context) {
 
     progressTimer = app_timer_register(500, progress_timer_callback, NULL); 
   }
-
 }
 
 

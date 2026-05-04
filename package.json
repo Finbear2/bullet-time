@@ -11,13 +11,14 @@
     "sdkVersion": "3",
     "enableMultiJS": true,
     "targetPlatforms": [
-      "aplite",
       "basalt",
-      "chalk",
       "diorite",
       "emery",
-      "flint",
-      "gabbro"
+      "flint"
+    ],
+    "capabilities": [
+      "configurable",
+      "microphone"
     ],
     "watchapp": {
       "watchface": false
@@ -29,7 +30,17 @@
       "TYPE"
     ],
     "resources": {
-      "media": []
+      "media": [{
+        "menuIcon": true,
+        "type": "bitmap",
+        "name": "IMAGE_ICON",
+        "file": "logo-small.png"
+      },
+      {
+        "type": "bitmap",
+        "name": "IMAGE_LOGO",
+        "file": "logo-big.png"
+      }]
     }
   }
 }
