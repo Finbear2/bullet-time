@@ -1,6 +1,42 @@
 var syncData = {}
+
+
 var currentRoom = ''
 var authToken = ''
+
+
+// Utils
+function sortRoomsByTimestampDesc(rooms) {
+    var keys = Object.keys(rooms);
+
+    keys.sort(function(a, b) {
+        return rooms[b] - rooms[a];
+    });
+
+    var sorted = {};
+    for (var i = 0; i < keys.length; i++) {
+        sorted[keys[i]] = rooms[keys[i]];
+    }
+
+    return sorted;
+}
+
+function moveKeyToTop(obj, key) {
+    if (!obj.hasOwnProperty(key)) return obj;
+
+    var result = {};
+
+    result[key] = obj[key];
+
+    for (var k in obj) {
+        if (obj.hasOwnProperty(k) && k !== key) {
+            result[k] = obj[k];
+        }
+    }
+
+    return result;
+}
+
 
 // Setting functions
 function getSettings() {
@@ -84,6 +120,7 @@ function getSyncData(token, callback) {
     xhr.onload = function () {
         var responseText = JSON.parse(xhr.responseText);
 
+        var sortedRooms = {}
         const rooms = responseText["rooms"] || {};
         const joinedRooms = rooms["join"] || {};
 
@@ -146,6 +183,7 @@ function getSyncData(token, callback) {
                     messageData['sender'] = sender;
 
                     messages[timeMili] = messageData;
+                    sortedRooms[name] = timeMili;
                 }
             }
 
@@ -153,7 +191,21 @@ function getSyncData(token, callback) {
             syncData[name] = roomInfo;
         }
 
-        callback(syncData)
+        sortedRooms = sortRoomsByTimestampDesc(sortedRooms);
+
+        orderedSyncData = {};
+
+        Object.keys(sortedRooms)
+            .sort(function(a, b) {
+                return sortedRooms[b] - sortedRooms[a];
+            })
+            .forEach(function(roomName) {
+                orderedSyncData[roomName] = syncData[roomName];
+            });
+
+        syncData = orderedSyncData;
+
+        callback(syncData);
     };
 
     xhr.onerror = function () {
